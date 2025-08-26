@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %} Home{% endblock title %}
+{% block body %}
+
+<div class="container my-4">
+  <!-- Add Todo Card -->
+  <div class="card bg-black text-light shadow-lg rounded-3 p-4">
+    <h2 class="mb-3">➕ Add a Todo</h2>
+    <form action="/" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Todo Title</label>
+        <input type="text" class="form-control bg-dark text-light border-secondary" name="title" id="title">
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Todo Description</label>
+        <input type="text" class="form-control bg-dark text-light border-secondary" name="desc" id="desc">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <!-- Todos List -->
+  <div class="card bg-black text-light shadow-lg rounded-3 p-4 mt-4">
+    <h2 class="mb-3">📌 Your Todos</h2>
+
+    {% if allTodo|length == 0 %}
+      <div class="alert alert-info">No Todos found. Add your first todo now!</div>
+    {% else %}
+      <table class="table table-dark table-hover align-middle">
+        <thead class="table-primary">
+          <tr>
+            <th>SNo</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for todo in allTodo %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.desc }}</td>
+            <td>{{ todo.date_created.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>
+              <a href="/update/{{todo.sno}}" class="btn btn-outline-info btn-sm">Update</a>
+              <a href="/delete/{{todo.sno}}" class="btn btn-outline-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock body %}

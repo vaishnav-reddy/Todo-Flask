@@ -24,7 +24,7 @@ The app uses **Flask-SQLAlchemy** with SQLite for storing todos and comes with a
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/vaishnav-reddy/Flask-Todo-App.git
+   git clone https://github.com/vaishnav-reddy/Todo-Flask.git
 
 ## Navigate to the project directory: 
 
@@ -76,7 +76,7 @@ flask-todo-app/
 ![Home page](images/homepage.png)
 
 ### Update Page
-![Update Page](images/Update.png)
+![Update Page](images/update.png)
 
 ## ⭐ Show Some Love!
 If you like this project, **give it a star ⭐** and share it with your friends! 😊
